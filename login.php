@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>login Page</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
 </head>
 <body>
 	<div class="container vh-100">
@@ -12,7 +13,7 @@
 					<h2>Login form</h2>
 				</div>
 				<div class="card-body">
-					<form action="login.php" method="post">
+					<form action="includes/login_handler.php" method="post">
 						<div class="form-group">
 							<label for="email">Email</label>
 							<input type="email" id="email" class="form-control" name="email" />
