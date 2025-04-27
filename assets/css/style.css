@@ -1,0 +1,140 @@
+/* General Body Styling */
+body {
+    /* background-color: #f8f9fa; Light gray background */
+    background: linear-gradient(to bottom right, #e0eafc, #cfdef3); /* Subtle gradient */
+    font-family: sans-serif;
+    color: #333;
+}
+
+/* Styling for Login/Register Cards */
+.auth-card {
+    max-width: 450px; /* Limit width */
+    border: none; /* Remove default card border */
+}
+
+.auth-card .card-header {
+    border-bottom: none; /* Remove border below header */
+    background-color: #0056b3; /* Darker primary */
+    border-radius: 0.25rem 0.25rem 0 0 !important; /* Match card radius */
+}
+
+.auth-card .card-body {
+    padding: 2rem; /* More padding inside card */
+}
+
+.auth-card .card-footer {
+    background-color: transparent; /* Make footer transparent */
+    border-top: 1px solid #eee; /* Light border above footer */
+    font-size: 0.85rem;
+}
+
+.auth-card .extra-links {
+    padding: 0.5rem 1.25rem; /* Padding for extra links */
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.auth-card .extra-links a {
+    margin: 0 10px; /* Space out links */
+}
+
+/* Gallery Styles from your original styles.css - Keep these if index.php needs them */
+#wrapper {
+    overflow-x: hidden;
+    /* Consider removing height: 125vh; if it causes issues */
+    /* background-image: url(https://students.iitmandi.ac.in/main/images/bg/bgms.jpg); Might be better applied only to index.php via inline style or specific body class */
+}
+
+.gallery-container { /* Renamed from .container to avoid conflict */
+    max-width: 1200px; /* Example width */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.gallery-container h1 {
+    margin: 20px 0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    color: rgb(128, 50, 50); /* Your #a style */
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Or space-around */
+    gap: 20px; /* Adds space between items */
+}
+
+.gallery .card { /* Scoped to gallery */
+    width: calc(16.66% - 20px); /* Adjust width for 6 columns, considering gap */
+    min-width: 150px; /* Prevent cards from becoming too small */
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 10px; /* Smoother radius */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smoother transition */
+}
+
+.gallery .card img {
+    width: 100%;
+    height: 180px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensure image covers the area */
+    display: block; /* Remove extra space below image */
+    filter: grayscale(50%);
+    transition: filter 0.3s ease;
+}
+
+.gallery .card:hover {
+    transform: scale(1.05); /* Slightly larger scale */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gallery .card:hover img {
+    filter: grayscale(0%); /* Remove grayscale on hover */
+}
+
+.gallery .card figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 15px; /* Adjusted padding */
+    width: 100%;
+    height: auto; /* Auto height */
+    font-size: 0.9rem; /* Adjusted font size */
+    font-weight: 500;
+    color: #fff;
+    opacity: 0;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%); /* Darker gradient */
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.gallery .card:hover figcaption {
+    opacity: 1;
+}
+
+
+#proposalForm label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+#proposalForm table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+#proposalForm th, #proposalForm td {
+    padding: 0.5rem;
+    text-align: left;
+}
+#proposalForm input[type="text"],
+#proposalForm input[type="number"],
+#proposalForm input[type="email"],
+#proposalForm select,
+#proposalForm textarea {
+    margin-bottom: 0.5rem; /* Space below inputs in table */
+}

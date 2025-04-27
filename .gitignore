@@ -1,0 +1,51 @@
+# PHP project .gitignore
+
+# Composer dependencies
+/vendor/
+/composer.lock
+
+# Environment files
+.env
+.env.backup
+.phpunit.result.cache
+
+# Framework specific
+/node_modules/
+/public/hot/
+/public/storage/
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# Build artifacts
+/build/
+/dist/
+
+# IDE & Editor specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.komodotools/
+*.code-workspace
+.project
+.buildpath
+.settings/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Cache and logs
+/cache/
+/logs/
+*.log
+*.cache
