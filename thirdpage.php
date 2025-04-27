@@ -2,141 +2,143 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Club Proposal Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
-        .container {
-            width: 80%;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        .background-design {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #5ee7df, #b490ca);
-            z-index: -1;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        }
-        h2 {
-            text-align: center;
-        }
-        form {
-            margin-top: 20px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            font-weight: bold;
-        }
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            resize: none;
-        }
-        input[type="submit"] {
-            background-color: #4caf50;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        /* Bold specific options */
-        #budget option[value="15000"], #budget option[value="50000"] {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Removed inline style block -->
 </head>
 <body>
-    <div class="background-design"></div>
-    <div class="container">
-        <h2>Club Proposal Form</h2>
-        <form id="proposalForm" method="post" enctype="multipart/form-data" action="data.php" method="post">
-            <div class="form-group">
-                <label for="club">Select Club:</label>
-                <select id="club" name="club">
-                    <option value="club1">Club 1</option>
-                    <option value="club2">Club 2</option>
-                    <option value="club3">Club 3</option>
-                </select>
+    <div class="container mt-5 mb-5"> <!-- Added top/bottom margin -->
+         <div class="card shadow">
+             <div class="card-header bg-info text-white"> <!-- Info header -->
+                 <h2 class="mb-0">Club Proposal Form</h2> <!-- Removed extra margin -->
+             </div>
+             <div class="card-body">
+                 <form id="proposalForm" method="post" action="includes/data.php"> <!-- Corrected action path -->
+                    <!-- Removed enctype as it's not needed unless uploading files -->
+
+                    <div class="form-group">
+                        <label for="club">Select Club:</label>
+                        <select id="club" name="club" class="form-control">
+                            <option value="ArtGeeks">ArtGeeks</option>
+                            <option value="SAE">SAE</option>
+                            <option value="HnT">Hiking & Trekking</option>
+                            <option value="Yantrik">Yantrik</option>
+                            <option value="Robotronics">Robotronics</option>
+                            <option value="MTB">Mountain Biking Club</option>
+                            <option value="GDSC">GDSC</option>
+                            <option value="Stac">STAC</option>
+                            <option value="PMC">Photography & Movie Making</option>
+                            <option value="Designauts">Designauts</option>
+                            <option value="Kamandprompt">Kamandprompt</option>
+                            <option value="Nirmaan">Nirmaan</option>
+                             <!-- Add other clubs -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idea">Idea/Proposal Description:</label>
+                        <textarea id="idea" name="idea" class="form-control" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Estimated Budget (INR):</label>
+                         <input type="number" id="budget" name="budget" class="form-control" required min="0" step="0.01">
+                        <!-- Changed budget to number input -->
+                    </div>
+
+                    <hr> <!-- Separator -->
+                    <h4 class="mb-3">Item Breakdown</h4>
+
+                    <div class="form-group">
+                       <!-- <label>Items:</label> --> <!-- Label might be redundant with table header -->
+                        <table class="table table-bordered table-sm"> <!-- Bootstrap table styling -->
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">#</th>
+                                    <th>Item Name</th>
+                                    <th style="width: 20%;">Quantity</th>
+                                    <th style="width: 10%;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="items-tbody">
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text" name="itemName[]" class="form-control form-control-sm" required></td>
+                                    <td><input type="number" name="itemquantity[]" class="form-control form-control-sm" min="1" step="1" required></td>
+                                    <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="addRow()">+ Add Item</button>
+                    </div>
+
+                    <hr> <!-- Separator -->
+
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="fromEmail">Your Email (Submitter):</label>
+                            <input type="email" id="fromEmail" name="fromEmail" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="toEmail">Recipient's Email (e.g., Faculty Advisor):</label>
+                            <input type="email" id="toEmail" name="toEmail" class="form-control" required>
+                        </div>
+                    </div>
+
+                     <!-- Removed the specific "Submit for Club FA Approval" button for now -->
+                    <!-- <div class="form-group">
+                        <input type="button" class="btn btn-warning" value="Submit for Club FA Approval" onclick="submitToApprovalPage()">
+                    </div> -->
+
+                    <div class="form-group mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg w-100">Submit Proposal Data</button>
+                        <!-- Changed button type to submit -->
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="idea">idea</label>
-                <textarea id="idea" name="idea" rows="4" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="budget">budget</label>
-                <textarea name="budget" id="budget" rows="1" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="items">Items:</label>
-                <table id="items">
-                    <thead>
-                        <tr>
-                            <th>Serial Number</th>
-                            <th>Item Name</th>
-                            <th>Item Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="serialNumber[]" required></td>
-                            <td><input type="text" name="itemName[]" required></td>
-                            <td><input type="number" name="itemquantity[]" min="0" step="1" required onchange="updateTotal()"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="button" onclick="addRow()">Add Row</button>
-            </div>
-            <div class="form-group">
-                <label for="fromEmail">From (Your Email):</label>
-                <input type="email" id="fromEmail" name="fromEmail" required>
-            </div>
-            <div class="form-group">
-                <label for="toEmail">To (Recipient's Email):</label>
-                <input type="email" id="toEmail" name="toEmail" required>
-            </div>
-            <!-- Add the submit button for Club FA -->
-            <div class="form-group">
-                <input type="button" value="Submit for Club FA Approval" onclick="submitToApprovalPage()">
-            </div>
-            <!-- Original generate PDF & Email button -->
-            <div class="form-group">
-                <input type="submit" value="Generate PDF & Email">
-            </div>
-        </form>
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
     <script>
-        function submitToApprovalPage() {
-            // Pass form data as URL parameters and redirect to the approval page
-            const formData = new FormData(document.getElementById('proposalForm'));
-            const urlParams = new URLSearchParams(formData);
-            window.location.href = 'club_fa_approval.php?' + urlParams.toString();
+        let rowCount = 1;
+
+        function addRow() {
+            rowCount++;
+            const tbody = document.getElementById('items-tbody');
+            const newRow = tbody.insertRow();
+            newRow.innerHTML = `
+                <td>${rowCount}</td>
+                <td><input type="text" name="itemName[]" class="form-control form-control-sm" required></td>
+                <td><input type="number" name="itemquantity[]" class="form-control form-control-sm" min="1" step="1" required></td>
+                <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>
+            `;
+            updateRowNumbers();
         }
 
-        // Rest of your JavaScript code...
+        function removeRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+            updateRowNumbers();
+             // Ensure at least one row remains if needed (optional)
+             const tbody = document.getElementById('items-tbody');
+             if (tbody.rows.length === 0) {
+                 rowCount = 0; // Reset count if all rows removed
+                 addRow(); // Add a blank row back
+             }
+        }
+
+        function updateRowNumbers() {
+            const tbody = document.getElementById('items-tbody');
+            const rows = tbody.getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].cells[0].innerText = i + 1;
+            }
+            rowCount = rows.length; // Update global row count
+        }
+
+        // Removed submitToApprovalPage() as the button is commented out
     </script>
 </body>
 </html>
